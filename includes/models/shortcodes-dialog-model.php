@@ -12,16 +12,16 @@ class PJJUH_Shortcodes_Dialog_Model extends PJ_Model {
   
   public function __construct() {
     //get the settings from DB
-    $dialog_settings = get_option('pjjuh_dialog_settings');
+    $dialog_settings = get_option('pjjuh_shortcode_settings');
 
     //specify defaults of dialog attributes
     $this->dialog_default_atts = array(
       'button_title'=>'Button',
       'title'=>'',
       'page'=>'',
-      'width'=>$dialog_settings['width'],
-      'height'=>$dialog_settings['height'],
-      'modal'=>$dialog_settings['modal']
+      'width'=>$dialog_settings['dialog-width'],
+      'height'=>$dialog_settings['dialog-height'],
+      'modal'=>$dialog_settings['dialog-modal']
     );
     
     //set starting ID to 1

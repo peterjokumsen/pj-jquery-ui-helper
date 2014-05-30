@@ -1,144 +1,54 @@
 <?php
 
 class PJJUH_Admin_View extends PJ_Admin_View {
-  
-  public function __construct() {
-    $this->view_content = '';
+  //create wrapper div and form for sub_menu with description of sub_menu if set
+  public function render_sub_menu_header($title, $description) {
+    echo '<div class="wrap"><h1>'. $title .'</h1>';
+    if ($description) {
+      echo '<p>'. $description .'</p>';
+    }
+    echo '<form action="options.php" method="post">';
   }
   
-  public function create_admin_menu() {
-    $capability = 'install_plugins';
-    $slug = 'pj-jquery-ui-helper';
-    //create new admin menu page, calls temp_admin_menu_page for now 
-    add_menu_page( 
-      'PJ Plugins', 
-      'PJ Plugins', 
-      $capability, 
-      $slug);
-    //create admin sub-menu page, calls temp_admin_menu_page for now 
-    //same slug as parent to have it overwrite the parent page
-    add_submenu_page(
-      $slug,
-      'PJ Jquery UI Helper',
-      'PJ Jquery UI Helper',
-      $capability,
-      $slug,
-      array($this, 'display_sub_menu'));
-    //create admin sub-menu page, calls temp_admin_menu_page for now
-    add_submenu_page(
-      $slug,
-      'PJJUH SUB MENU',
-      'PJJUH SUB MENU',
-      $capability,
-      $slug . '_sub',
-      array($this, 'display_sub_menu'));
+  //close off opened div and form from header
+  public function render_sub_menu_footer() {
+    ?>
+    <input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" />
+    </form></div>
+    <?php
   }
   
-  public function display_sub_menu() {
-    $include_path = plugin_dir_path(__FILE__);
-    include $include_path . 'admin-menu-header.php';
-    
-    settings_fields('pjjuh_settings');
-    do_settings_sections('pjjuh_settings');
-    
-    include $include_path . 'admin-menu-footer.php';
+  //create the description for setting section
+  public function render_setting_section($description) {
+    echo '<p>' . $description . '</p>';
   }
   
-  public function general_settings_section_text() {
-    echo '<p>' . __('general settings section', 'pj-jquery-ui-helper') . '</p>';
+  /*
+   * Create input for a setting of type 'text'
+   * @param setting_id the id of the given setting
+   * @param setting_group_id the id of the group the setting is for
+   * @param current_value the current value of the setting
+   */
+  public function render_setting_text($setting_id, $setting_group_id, $current_value) {
+    echo "<input id='{$setting_id}' name='{$setting_group_id}[{$setting_id}]' size='40' type='text' value='{$current_value}' />";
   }
   
-  public function plugin_setting_string() {
-    $options = get_option('pjjuh_settings');
-    echo '<input id="pjjuh_settings" name="pjjuh_settings[theme]" size="40" type="text" value="'. $options['theme'] .'"/>';
+  /*
+   * Create select for a dropdown input (setting type 'dropdown')
+   * @param setting_id the id of the given setting
+   * @param setting_group_id the id of the group the setting is for
+   * @param current_value the current value of the setting
+   * @param items array of items to be put into dropdown list
+   */
+  public function render_setting_dropdown($setting_id, $setting_group_id, $current_value, $items) {
+    echo "<select id='{$setting_id}' name='{$setting_group_id}[{$setting_id}]'>";
+    foreach ($items as $item) {
+      echo "<option value='{$item}' ";
+      if ($item==$current_value) {
+        echo "selected='selected'";
+      }
+      echo ">{$item}</option>";
+    }
+    echo "</select>";
   }
-  
-  public function plugin_setting_dropdown() {
-    global $wp_current_filter;
-    $options = get_option('pjjuh_settings');
-    $selected_option = $options['theme'];
-    echo '<select id="pjjuh_settings" name="pjjuh_settings[theme]">'.
-      '<option value="blue"'. ($selected_option == 'blue' ? ' selected' : '') .'>blue</option>'.
-      '<option value="base"'. ($selected_option == 'base' ? ' selected' : '') .'>base</option>'.
-      '</select>';
-  }
-  
-  public function admin_sub_menu_page() {
-    //$include_path = plugin_dir_path(__FILE__);
-    //include $include_path . 'admin-menu-header.php';
-    echo '<h2>' . get_admin_page_title() . '</h2>';
-    
-    //include $include_path . 'admin-menu-footer.php';    
-  }
-}
-
-
-
-/*
-     <form name="f" method="post" action="post.php">
-     
-     <table width="100%" border="0">
-       <tr>
-         <td width="45%"><h1>Login Widget AFO Settings</h1></td>
-       <td width="55%">&nbsp;</td>
-       </tr>
-       <tr>
-         <td><strong>Login Redirect Page:</strong></td>
-       <td><?php
-           $args = array(
-           'depth'            => 0,
-           'selected'         => $redirect_page,
-           'echo'             => 1,
-           'show_option_none' => '-',
-           'id' 			   => 'redirect_page',
-           'name'             => 'redirect_page'
-           );
-           wp_dropdown_pages( $args ); 
-         ?></td>
-       </tr>
-
-        <tr>
-         <td><strong>Logout Redirect Page:</strong></td>
-        <td><?php
-           $args1 = array(
-           'depth'            => 0,
-           'selected'         => $logout_redirect_page,
-           'echo'             => 1,
-           'show_option_none' => '-',
-           'id' 			   => 'logout_redirect_page',
-           'name'             => 'logout_redirect_page'
-           );
-           wp_dropdown_pages( $args1 ); 
-         ?></td>
-       </tr>
-
-       <tr>
-         <td><strong>Link in Username:</strong></td>
-       <td><?php
-           $args2 = array(
-           'depth'            => 0,
-           'selected'         => $link_in_username,
-           'echo'             => 1,
-           'show_option_none' => '-',
-           'id' 			   => 'link_in_username',
-           'name'             => 'link_in_username'
-           );
-           wp_dropdown_pages( $args2 ); 
-         ?></td>
-       </tr>
-
-       <tr>
-         <td>&nbsp;</td>
-         <td><input type="submit" name="submit" value="Save" class="button button-primary button-large" /></td>
-       </tr>
-       <tr>
-         <td>&nbsp;</td>
-         <td>&nbsp;</td>
-       </tr>
-       <tr>
-         <td colspan="2">Use <span style="color:#000066;">[login_widget]</span> shortcode to display login form in post or page.<br />
-        Example: <span style="color:#000066;">[login_widget title="Login Here"]</span></td>
-       </tr>
-     </table>
-     </form>
-*/
+} //End View
