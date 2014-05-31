@@ -22,8 +22,9 @@ $return_string =
 foreach ($tabs as $tab) {
   $return_string .= '<li><a href="#'. $tab['id'] .'">'. $tab['title'] .'</a></li>';
 }
-$return_string .= '</ul>';
+$return_string .= '</ul>'; //Close unordered list
 foreach ($tabs as $tab) {
   $return_string .= '<div id="'. $tab['id'] .'">'. $tab['content'] .'</div>';
 }
+$return_string .= '</div>'; //Close the parent div
 return $return_string;

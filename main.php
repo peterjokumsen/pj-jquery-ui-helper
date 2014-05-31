@@ -153,7 +153,9 @@ class PJJUH_Main extends PJ_Plugin {
     $this->controllers['admin']->pjjuh_init_settings();
   }
 }
-$pjjuh_main = new PJJUH_Main();
+if (!$pjjuh_main) {
+  $pjjuh_main = new PJJUH_Main();
+}
 //Action hooks for PJJUH_Main
 add_action('init', array($pjjuh_main, 'init'));
 if (is_admin()) {
