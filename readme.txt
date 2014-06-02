@@ -1,9 +1,10 @@
 === PJ jQuery UI Helper ===
-Donate link: http://example.com/
+Contributors: pjokumsen
+Donate Link: http://pjokumsen.co.za/wordpress/plugin/pj-jquery-ui-helper
 Tags: jquery ui, dialog, tabs
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Requires at least: 3.8.1
+Tested up to: 3.9.1
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,105 +15,58 @@ Plugin to incorporate jQuery UI in posts and pages using shortcodes.
 This plugin allows you to use jQuery UI's widgets with a simple to advanced shortcode in your pages or posts.
 
 Here is a list of the current widgets and their corresponding shortcodes:
-1. Dialog - Used with [pjjuh-dialog]*contents*[/pjjuh-tab] to create a button where the shortcode is inserted that will open a dialog with the contents of the tag (or you can set an attribute of page to a title of one of the pages on your site to load the contents of that page into the dialog that is opened from pressing the button). For more information on how to use this please visit my site. 
-1. Tabs - Used with [pjjuh-tab-group] and then [pjjuh-tab title="tab-title"]*contents*[/pjjuh-tab] to create a tab with the title "tab-title" that contains the contents specified. For more information on how to use this please visit my site. 
+
+* Dialog - Used with \[pjjuh-dialog\]*contents*\[/pjjuh-tab\] to create a button where the shortcode is inserted that will open a dialog with the contents of the tag (or you can set an attribute of page to a title of one of the pages on your site to load the contents of that page into the dialog that is opened from pressing the button). For more information on how to use this please visit [my site][plugin-page].
+* Tabs - Used with \[pjjuh-tab-group\] and then \[pjjuh-tab title="tab-title"\]*contents*\[/pjjuh-tab\] to create a tab with the title "tab-title" that contains the contents specified. For more information on how to use this please visit [my site][plugin-page]. 
 
 Widgets I hope to add in the near future are:
-1. Accordion
-1. Tooltips
+
+* Accordion
+* Tooltips
 
 I also hope to allow more variations for the widgets in the near future.
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
-
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
-
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+1. Upload files to the `/wp-content/plugins/` directory, in their own directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Add shortcodes to your pages/posts as you like
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= How can I create a dialog? =
 
-An answer to that question.
+Find where you would like to place the button, in that location (In Page/Post edit) insert \[pjjuh-dialog\]\{contents\}\[/pjjuh-dialog\] where \{contents\} is the contents you would like to have inside of your dialog.
 
-= What about foo bar? =
+= How can I create tabs? =
 
-Answer to foo bar dilemma.
+Find where you would like to place your tabs section, in that location (In Page/Post edit) insert \[pjjuh-tab-group\]\[pjjuh-tab title='\{tab-title\}'\]\{contents\}\[/pjjuh-tab\]\[/pjjuh-tab-group\] where \{contents\} is the contents you would like inside of that tab and \{tab-title\} is the text that will show in the tab's button. Take a look at screenshots for an example.
+
+= Are there more attributes I can use in the shortcodes? =
+
+Yes! There is a list of accepted attributes here: [Plugin Website][plugin-website].
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. An example of a dialog using the shortcode \[pjjuh-dialog\].
+2. An example of tabs using the shortcode \[pjjuh-tab-group\] and \[pjjuh-tab\].
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+= 1.0.2 =
+* Added settings for user to set default width and height for dialogs.
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+= 1.0.1 =
+* Included tabs functionality.
+* Allow for user to choose themes, more themes to be added.
+
+= 1.0.0 =
+* Created plugin with dialog functionality.
 
 == Upgrade Notice ==
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+= 1.0.2 =
+Tab widget added.
 
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+[plugin-website]: http://pjokumsen.co.za/wordpress/plugins/pj-jquery-ui-helper/ 
+                  "PJ jQuery UI Helper"

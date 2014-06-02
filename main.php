@@ -150,7 +150,7 @@ class PJJUH_Main extends PJ_Plugin {
     if (!$this->controllers['admin']) {
       $this->controllers['admin'] = new PJJUH_Admin_Controller('PJ jQuery UI Helper', $this->plugin_version);
     }
-    $this->controllers['admin']->pjjuh_init_settings();
+    $this->controllers['admin']->register_plugin();
   }
 }
 if (!$pjjuh_main) {
