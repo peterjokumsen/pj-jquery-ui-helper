@@ -13,7 +13,6 @@ if ( !function_exists( 'add_action' ) ) {
 
 /** Include model and view classes for dialog shortcodes */
 require_once $pjjuh_plugin_dir . 'models/shortcodes-dialog-model.php';
-require_once $pjjuh_plugin_dir . 'views/shortcodes/shortcodes-main-view.php';
 require_once $pjjuh_plugin_dir . 'views/shortcodes/shortcodes-dialog-main-view.php';
 
 /** Include model and view classes for tabs shortcodes */
@@ -25,7 +24,7 @@ class PJJUH_Shortcodes_Controller extends PJ_Controller {
   private $current_tab_group;
   
   public function __construct() {
-    add_action('wp_print_footer_scripts', array($this, 'create_pjjuh_script'), 5);
+    add_action('wp_print_footer_scripts', array($this, 'create_pjjuh_script'));
   }
   
   /* DIALOG FUNCTIONS */
@@ -82,11 +81,15 @@ class PJJUH_Shortcodes_Controller extends PJ_Controller {
   
   /* SCRIPT FUNCTION */
   public function create_pjjuh_script() {
+    $scripts = '';
     if (isset($this->views['tabs']) && isset($this->models['tabs'])) {
-     $this->views['tabs']->localize_script($this->models['tabs']->get_all_tabs());
+     $scripts = $this->views['tabs']->render_script($this->models['tabs']->get_all_tabs());
     }
     if (isset($this->views['dialog']) && isset($this->models['dialog'])) {
-      $this->views['dialog']->localize_script($this->models['dialog']->get_all_dialogs());
+      $scripts .= $this->views['dialog']->render_script($this->models['dialog']->get_all_dialogs());
+    }
+    if ($scripts != '') {
+      echo '<script>'.$scripts.'</script>';
     }
   }
   /* END DIALOG FUNCTIONS */

@@ -20,11 +20,7 @@ class PJJUH_Shortcodes_Dialog_View extends PJ_View {
     $current_content = include $this->current_dir . 'dialog-html.php';
     return $current_content;
   }
-  public function localize_script($dialogs) {
-    $pjjuh_dialogs;
-    foreach($dialogs as $dialog) {
-      $pjjuh_dialogs[] = $dialog;
-    }
-    wp_localize_script('pjjuh_dialog_script', 'pjjuh_dialogs', $pjjuh_dialogs);
+  public function render_script($dialogs) {
+    return include $this->current_dir . 'dialog-script.php';
   }
 }

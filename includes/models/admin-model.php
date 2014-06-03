@@ -37,7 +37,7 @@ class PJJUH_Admin_Model extends PJ_Admin_Model {
                             'description'=>'The CSS theme to be used',
                             'type'=>'dropdown',
                             'default'=>'blue',
-                            'items'=>array('blue','base')
+                            'items'=>array('blue','base','flick')
                         )//End of item
                     ) //End of items
                 )//End of section

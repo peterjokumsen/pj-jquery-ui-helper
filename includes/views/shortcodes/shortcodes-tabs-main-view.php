@@ -18,12 +18,8 @@ class PJJUH_Shortcodes_Tabs_View extends PJ_View {
     $current_content = include $this->current_dir . 'tabs-html.php';
     return $current_content;
   }
-  public function localize_script($tab_groups) {
-    $tab_group_ids;
-    foreach ($tab_groups as $tab_group) {
-      $tab_group_ids[] = '#' . $tab_group['id'];
-    }
-    wp_localize_script('pjjuh_tab_script', 'pjjuh_tabs', $tab_group_ids);
+  public function render_script($tab_groups) {
+    return include $this->current_dir . 'tabs-script.php';
   }
 }
 

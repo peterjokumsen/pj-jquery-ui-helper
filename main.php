@@ -4,7 +4,7 @@
 Plugin Name: PJ jQuery UI Helper
 Plugin URI: http://pjokumsen.co.za/wordpress/plugins/pj-jquery-ui-helper/
 Description: Plugin to use jQuery UI in WordPress.
-Version: 1.0.2
+Version: 1.0.3
 Author: Peter Jokumsen
 Author URI: http://pjokumsen.co.za/
 */
@@ -73,7 +73,7 @@ class PJJUH_Main extends PJ_Plugin {
   
   public $plugin_path;
   public $plugin_url;
-  public $plugin_version = '1.0.2';
+  public $plugin_version = '1.0.3';
   public $plugin_slug = 'pj-jquery-ui-helper';
   
   
@@ -113,7 +113,6 @@ class PJJUH_Main extends PJ_Plugin {
   private function checkDebug() {
     if (!WP_DEBUG) {
       $this->jQuery_CSS_Dir .= 'minified/';
-      $this->jQuery_JS_Dir .= 'minified/';
       $this->scriptSuffix = '.min';
     }
   }
@@ -121,10 +120,12 @@ class PJJUH_Main extends PJ_Plugin {
 //Enqueue scripts for PJ Modal Dialog
   public function load_scripts() {
     //Loading scripts that will always be used, specific scripts loaded in the controllers
+    wp_enqueue_script('jquery-ui-core');
+    wp_enqueue_script('jquery-ui-widget');
+    wp_enqueue_script('jquery-ui-tabs');
+    wp_enqueue_script('jquery-ui-dialog');
+    wp_enqueue_script('jquery-ui-button');
     wp_enqueue_style('jquery-ui-style', $this->jQuery_CSS_Dir . 'jquery-ui' . $this->scriptSuffix . '.css', false, $this->plugin_version);
-    wp_enqueue_script( 'jquery-ui', $this->jQuery_JS_Dir . 'jquery-ui' . $this->scriptSuffix . '.js', array('jquery'), $this->plugin_version);
-    wp_enqueue_script('pjjuh_tab_script', $this->PJJUH_JS_Dir . 'tabs.js', array('jquery'), $this->plugin_version, true); //Load in footer (final true)
-    wp_enqueue_script('pjjuh_dialog_script', $this->PJJUH_JS_Dir . 'dialog.js', array('jquery'), $this->plugin_version, true); //Load in footer (final true)
   }
   //
   public function admin_init() {

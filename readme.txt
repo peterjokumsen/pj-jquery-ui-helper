@@ -53,6 +53,10 @@ Yes! There is a list of accepted attributes here: [Plugin Website][plugin-websit
 
 == Changelog ==
 
+= 1.0.3 =
+* Used WordPress jQuery UI scripts
+* Updated to allow for multiple dialogs on a page/post
+
 = 1.0.2 =
 * Added settings for user to set default width and height for dialogs.
 
@@ -64,6 +68,9 @@ Yes! There is a list of accepted attributes here: [Plugin Website][plugin-websit
 * Created plugin with dialog functionality.
 
 == Upgrade Notice ==
+
+= 1.0.3 = 
+Use WordPress scripts
 
 = 1.0.2 =
 Tab widget added.
