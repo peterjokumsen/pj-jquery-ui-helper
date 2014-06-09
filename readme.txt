@@ -60,6 +60,9 @@ Yes! There are currently 3 supported themes, check out the screenshots page to s
 
 == Changelog ==
 
+= 1.0.4 =
+* Added 'trontastic' theme for darker websites
+
 = 1.0.3 =
 * Used WordPress jQuery UI scripts
 * Updated to allow for multiple dialogs on a page/post
@@ -75,6 +78,9 @@ Yes! There are currently 3 supported themes, check out the screenshots page to s
 * Created plugin with dialog functionality.
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+New theme available
 
 = 1.0.3 = 
 Use WordPress scripts
