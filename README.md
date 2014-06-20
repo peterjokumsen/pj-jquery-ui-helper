@@ -9,12 +9,12 @@ This plugin allows you to use jQuery UI's widgets with a simple to advanced shor
 
 Here is a list of the current widgets and their corresponding shortcodes:
 
-* Dialog - Used with \[pjjuh-dialog\]*contents*\[/pjjuh-tab\] to create a button where the shortcode is inserted that will open a dialog with the contents of the tag (or you can set an attribute of page to a title of one of the pages on your site to load the contents of that page into the dialog that is opened from pressing the button). For more information on how to use this please visit [my site][plugin-page].
-* Tabs - Used with \[pjjuh-tab-group\] and then \[pjjuh-tab title="tab-title"\]*contents*\[/pjjuh-tab\] to create a tab with the title "tab-title" that contains the contents specified. For more information on how to use this please visit [my site][plugin-page]. 
+* Dialog - Used with \[pjjuh-dialog\]*contents*\[/pjjuh-tab\] to create a button where the shortcode is inserted that will open a dialog with the contents of the tag (or you can set an attribute of page to a title of one of the pages on your site to load the contents of that page into the dialog that is opened from pressing the button). For more information on how to use this please visit [my site](http://pjokumsen.co.za/wordpress/plugins/pj-jquery-ui-helper/).
+* Tabs - Used with \[pjjuh-tab-group\] and then \[pjjuh-tab title="tab-title"\]*contents*\[/pjjuh-tab\] to create a tab with the title "tab-title" that contains the contents specified. For more information on how to use this please visit [my site](http://pjokumsen.co.za/wordpress/plugins/pj-jquery-ui-helper/). 
+* Accordion - Used with \[pjjuh-accordion\] and then \[pjjuh-acc-section title="section-title"\]*contents*\[/pjjuh-acc-section\] to create a section with the title "section-title" that contains the contents specified. For more information on how to use this please visit [my site](http://pjokumsen.co.za/wordpress/plugins/pj-jquery-ui-helper/).
 
 Widgets I hope to add in the near future are:
 
-* Accordion
 * Tooltips
 
 I also hope to allow more variations for the widgets in the near future.
@@ -37,14 +37,32 @@ Find where you would like to place your tabs section, in that location (In Page/
 
 = Are there more attributes I can use in the shortcodes? =
 
-Yes! There is a list of accepted attributes here: [Plugin Website][plugin-website].
+Yes! There is a list of accepted attributes here: [Plugin Website](http://pjokumsen.co.za/wordpress/plugins/pj-jquery-ui-helper/).
+
+= Are there themes that I can choose from? =
+
+Yes! There are currently 3 supported themes, check out the screenshots page to see how they look. The themes can be selected in the Plugin Options menu (PJ jQuery UI Helper, on the side of your admin page).
 
 == Screenshots ==
 
 1. An example of a dialog using the shortcode \[pjjuh-dialog\].
 2. An example of tabs using the shortcode \[pjjuh-tab-group\] and \[pjjuh-tab\].
+3. An example of an accordion using the shortcode \[pjjuh-accordion\] and \[pjjuh-acc-section\].
+
+Examples of themes
+
+4. blue theme
+5. base theme
+6. flick theme
+7. trontastic theme
 
 == Changelog ==
+
+= 1.0.5 =
+* Included accordion functionality
+
+= 1.0.4 =
+* Added 'trontastic' theme for darker websites
 
 = 1.0.3 =
 * Used WordPress jQuery UI scripts

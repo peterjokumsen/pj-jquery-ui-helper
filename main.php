@@ -4,7 +4,7 @@
 Plugin Name: PJ jQuery UI Helper
 Plugin URI: http://pjokumsen.co.za/wordpress/plugins/pj-jquery-ui-helper/
 Description: Plugin to use jQuery UI in WordPress.
-Version: 1.0.4
+Version: 1.0.5
 Author: Peter Jokumsen
 Author URI: http://pjokumsen.co.za/
 */
@@ -73,7 +73,7 @@ class PJJUH_Main extends PJ_Plugin {
   
   public $plugin_path;
   public $plugin_url;
-  public $plugin_version = '1.0.4';
+  public $plugin_version = '1.0.5';
   public $plugin_slug = 'pj-jquery-ui-helper';
   
   
@@ -124,6 +124,7 @@ class PJJUH_Main extends PJ_Plugin {
     wp_enqueue_script('jquery-ui-widget');
     wp_enqueue_script('jquery-ui-tabs');
     wp_enqueue_script('jquery-ui-dialog');
+    wp_enqueue_script('jquery-ui-accordion');
     wp_enqueue_script('jquery-ui-button');
     wp_enqueue_style('jquery-ui-style', $this->jQuery_CSS_Dir . 'jquery-ui' . $this->scriptSuffix . '.css', false, $this->plugin_version);
   }
@@ -142,9 +143,8 @@ class PJJUH_Main extends PJ_Plugin {
     add_shortcode('pjjuh-dialog', array($this->controllers['shortcodes'], 'create_dialog'));
     add_shortcode('pjjuh-tab-group', array($this->controllers['shortcodes'], 'create_tabs'));
     add_shortcode('pjjuh-tab', array($this->controllers['shortcodes'], 'add_tab'));
-    /* original shortcode stuff
-    include_once $this->plugin_path . 'functions/CreateDialogScript.php';
-    add_shortcode('jquery-diag', 'pjjuh_dialog_shortcode'); */
+    add_shortcode('pjjuh-accordion', array($this->controllers['shortcodes'], 'create_accordion'));
+    add_shortcode('pjjuh-acc-section', array($this->controllers['shortcodes'], 'add_section'));
   }
   
   public function register_plugin() {
